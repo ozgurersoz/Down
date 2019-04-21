@@ -8,12 +8,10 @@
 import Foundation
 import libcmark
 
-public class CodeBlock: Node {
-    
-    public var cmarkNode: CMarkNode
+public class CodeBlock: BaseNode {
     
     /// The code content, if present.
-    public lazy var literal: String? = cmarkNode.literal
+    public var literal: String? { return cmarkNode.literal }
     
     /// The fence info is an optional string that trails the opening sequence of backticks.
     /// It can be used to provide some contextual information about the block, such as
@@ -28,16 +26,6 @@ public class CodeBlock: Node {
     ///
     public lazy var fenceInfo: String? = cmarkNode.fenceInfo
     
-    /// Attempts to wrap the given `CMarkNode`.
-    ///
-    /// This will fail if `cmark_node_get_type(cmarkNode) != CMARK_NOD_CODE_BLOCK`
-    ///
-    /// - parameter cmarkNode: the node to wrap.
-    ///
-    public init?(cmarkNode: CMarkNode) {
-        guard cmarkNode.type == CMARK_NODE_CODE_BLOCK else { return nil }
-        self.cmarkNode = cmarkNode
-    }
 }
 
 

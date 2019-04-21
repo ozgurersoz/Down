@@ -8,10 +8,8 @@
 import Foundation
 import libcmark
 
-public class Image: Node {
-    
-    public var cmarkNode: CMarkNode
-    
+public class Image: BaseNode {
+
     /// The title of the image, if present.
     ///
     /// In the example below, the first line is a reference link, with the reference at the
@@ -35,17 +33,6 @@ public class Image: Node {
     /// ```
     ///
     public lazy var url: String? = cmarkNode.url
-    
-    /// Attempts to wrap the given `CMarkNode`.
-    ///
-    /// This will fail if `cmark_node_get_type(cmarkNode) != CMARK_NODE_IMAGE`
-    ///
-    /// - parameter cmarkNode: the node to wrap.
-    ///
-    public init?(cmarkNode: CMarkNode) {
-        guard cmarkNode.type == CMARK_NODE_IMAGE else { return nil }
-        self.cmarkNode = cmarkNode
-    }
 }
 
 

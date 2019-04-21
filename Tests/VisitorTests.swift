@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import Down
+import libcmark
 
 class VisitorTests: XCTestCase {
 
@@ -19,7 +20,7 @@ class VisitorTests: XCTestCase {
         
         let down = Down(markdownString: markdown)
         let ast = try down.toAST()
-        let document = Document(cmarkNode: ast)!
+        let document = Document(cmarkNode: ast, nodeType: CMARK_NODE_DOCUMENT)!
         
         // When
         let result = document.accept(DebugVisitor())
@@ -72,7 +73,7 @@ class VisitorTests: XCTestCase {
         
         let down = Down(markdownString: markdown)
         let ast = try down.toAST()
-        print(Document(cmarkNode: ast)!.accept(DebugVisitor()))
+        print(Document(cmarkNode: ast, nodeType: CMARK_NODE_DOCUMENT)!.accept(DebugVisitor()))
         
         // When
         let result = try down.toAttributedString(styler: EmptyStyler()).string
