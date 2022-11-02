@@ -1,0 +1,4 @@
+module libcmark {
+    umbrella "/Users/ozgurersoz/Documents/ella-ios/Tuist/Dependencies/SwiftPackageManager/.build/checkouts/Down/Sources/cmark"
+    export *
+}
