@@ -1,4 +1,4 @@
-module libcmark [system][extern_c] {
+module libcmark [system] {
     header "../node.h"
     export *
 }
