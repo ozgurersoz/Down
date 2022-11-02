@@ -1,4 +1,4 @@
 module libcmark [system] {
-    header "../node.h"
+    umberalla header "../node.h"
     export *
 }
